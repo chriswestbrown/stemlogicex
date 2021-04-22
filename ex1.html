@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>USNA STEM Logic Exercise</title>
+      <meta charset="utf-8">
+    <link rel="stylesheet" href="logic.css">
+    <script src="JS-Interpreter/acorn.js"></script>
+    <script src="JS-Interpreter/interpreter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.5/ace.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+<h1>USNA STEM Logic Module - Progamming problems</h1>
+
+    Your job for this activity is to write code that implements
+    the same functionality as a not-gate, an and-gate, and an or-gate.
+    Your tools are the simple
+    programming language features we've discussed so
+    far: <code>if/if-else</code>-statements, testing for equality with
+    the <code>==</code> operator, and a simple "API" of functions
+    <code>getA()</code>,
+    <code>getB()</code> and
+    <code>output(<em>num</em>)</code>, which we've added to allow your
+    program to communicate with the environment in which the program
+    operates.  If you have some programming experience, please don't cheat and
+    use language features other than the ones listed above!  The goal is to do
+    do this <em>only</em> with <code>if/if-else</code> and <code>==</code>.
+
+    <div style="width: 600px;
+    padding: 10px 10px 0px 10px;">
+<b>Your API:</b> An "API" is a set of functions your program can use to interact
+with the environment it operates in.  Your API for this problem consists of three functions:
+<ol>
+  <li>
+    <code>getA()</code> - gets the value of the "A" input
+    to the program.  E.g.
+    "<code>if (getA() == 0)</code> ...".
+  </li>
+  <li>
+    <code>getB()</code> - gets the value of the "B" input
+    to the program.  E.g. "<code>if (getB() == 0)</code> ...".
+  </li>
+  <li><code>output(<em>num</em>)</code> - outputs
+    the value <em>num</em> from the program.
+    E.g. "<code>output(1);</code>"
+  </li>
+</ol>
+</div>
+
+<b>Note:</b> The code editor starts with a simple program that
+just outputs whatever value input A has, ignoring input B alltogether.
+
+<!-- -------------------------------------------- -->
+<div class="mainlist" id="widget1">
+    <div style="width: 600pt; margin-bottom:10px;">
+      <b>1. Implementing "not" as a program in the Javascript language</b><br>
+      Your task for this problem is to implement the same functionality as a
+      "not-gate" using only "if", "else", "==" and our simple API of getA() and
+      output(<em>num</em>).  To remind you, here is the truth table for "not"
+      (often denoted with "&not;").
+      Be sure to test your program for each row of the truth table!
+      <br><br>
+        <table class="tt">
+          <tr><th>A</th><th>&not;A</th></tr>
+          <tr><td>0</td><td>1</td></tr>
+          <tr><td>1</td><td>0</td></tr>
+        </table>
+
+    </div>
+    <div style="height: 0em;"></div>
+    <table>
+      <tr>
+	<td style="text-align: center;"><b>PROG1 : your program</b></td>
+	<td colspan="2" style="text-align: center;"><b>tester for your program</b></td>
+	<td></td>
+	<td></td>
+      </tr>
+      <tr>
+	<td rowspan="2">
+	  <div class="editor" id="editor1">if (getA() == 0) {
+  output(0);
+}
+else {
+  output(1);
+}</div>
+      </td>
+      <td style="padding-left: 1em; padding-right: 1em;">
+	<button type="button"
+		onclick="widget1.execit('inA1',null,'res1','msg1')">execute</button>
+      </td>
+      <td>
+	<table>
+	  <tr>
+	    <td>A:<input type="text" id="inA1" name="inA1" class="bitfield"></td>
+	    <td>
+	      <object id='box1' data="inoutbox1.svg" type="image/svg+xml" style="height: 3em;"></object>
+	      <!--<img id='box1' style="height: 3em;"src="inoutbox.svg">-->
+	    </td>	    <td>
+	      <input type="text" id="res1" name="res1" class="bitfield" readonly
+		     onfocus="this.blur()" tabindex="-1">
+	    </td>
+	  </tr>
+	  <!--<tr>
+	    <td>B:<input type="text" id="inB1" name="inB1" class="bitfield"></td>
+	  </tr>-->
+	</table>
+      </td>
+      <td>&nbsp;&nbsp;</td>
+    <td></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding-left: 1em;">
+	<div style="height: 1.25em;"></div>
+	<b>Messages</b><br>
+	<div id="msg1" style="height: 100px; border: 1px red solid">
+	</div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- -------------------------------------------- -->
+<div class="mainlist" id="widget2">
+    <div style="width: 600pt;">
+      <b>2. Implementing "and" as a program in the Javascript language</b><br>
+      Your task for this problem is to implement the same functionality as an
+      "and-gate" using only "if", "else", "==" and our simple API of getA(),
+      getB() and
+      output(<em>num</em>).  To remind you, here is the truth table for "and"
+      (often denoted with "&and;").
+      Be sure to test your program for each row of the truth table!
+      <br><br>
+        <table class="tt">
+          <tr><th>A</th><th>B</th><th>A&and;B</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>0</td><td>1</td><td>0</td></tr>
+          <tr><td>1</td><td>0</td><td>0</td></tr>
+          <tr><td>1</td><td>1</td><td>1</td></tr>
+        </table>
+    </div>
+    <div style="height: 0em;"></div>
+    <table>
+      <tr>
+	<td style="text-align: center;"><b>PROG2 : your program</b></td>
+	<td colspan="2" style="text-align: center;"><b>tester for your program</b></td>
+	<td></td>
+	<td></td>
+      </tr>
+      <tr>
+	<td rowspan="2">
+	  <div class="editor" id="editor2">if (getA() == 0) {
+  output(0);
+}
+else {
+  output(1);
+}</div>
+      </td>
+      <td style="padding-left: 1em; padding-right: 1em;">
+	<button type="button"
+		onclick="widget2.execit('inA2','inB2','res2','msg2')">execute</button>
+      </td>
+      <td>
+	<table>
+	  <tr>
+	    <td>A:<input type="text" id="inA2" name="inA2" class="bitfield"></td>
+	    <td rowspan="2">
+	      <object id='box2' data="inoutbox2.svg" type="image/svg+xml" style="height: 3em;"></object>
+	      <!--<img id='box1' style="height: 3em;"src="inoutbox.svg">-->
+	    </td>	    <td rowspan="2">
+	      <input type="text" id="res2" name="res2" class="bitfield" readonly
+		     onfocus="this.blur()" tabindex="-1">
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>B:<input type="text" id="inB2" name="inB2" class="bitfield"></td>
+	  </tr>
+	</table>
+      </td>
+      <td>&nbsp;&nbsp;</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding-left: 1em;">
+	<div style="height: 1.25em;"></div>
+	<b>Messages</b><br>
+	<div id="msg2" style="height: 100px; border: 1px red solid">
+	</div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+<!-- -------------------------------------------- -->
+<div class="mainlist" id="widget3">
+    <div style="width: 600pt;">
+      <b>3. Implementing "or" as a program in the Javascript language</b><br>
+      Your task for this problem is to implement the same functionality as an
+      "or-gate" using only "if", "else", "==" and our simple API of getA(),
+      getB() and
+      output(<em>num</em>).  To remind you, here is the truth table for "or"
+      (often denoted with "&or;").
+      Be sure to test your program for each row of the truth table!
+      <br><br>
+        <table class="tt">
+          <tr><th>A</th><th>B</th><th>A&or;B</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>0</td><td>1</td><td>1</td></tr>
+          <tr><td>1</td><td>0</td><td>1</td></tr>
+          <tr><td>1</td><td>1</td><td>1</td></tr>
+        </table>
+    </div>
+    <div style="height: 0em;"></div>
+    <table>
+      <tr>
+	<td style="text-align: center;"><b>PROG3 : your program</b></td>
+	<td colspan="2" style="text-align: center;"><b>tester for your program</b></td>
+	<td></td>
+	<td></td>
+      </tr>
+      <tr>
+	<td rowspan="2">
+	  <div class="editor" id="editor3">if (getA() == 0) {
+  output(0);
+}
+else {
+  output(1);
+}</div>
+      </td>
+      <td style="padding-left: 1em; padding-right: 1em;">
+	<button type="button"
+		onclick="widget3.execit('inA3','inB3','res3','msg3')">execute</button>
+      </td>
+      <td>
+	<table>
+	  <tr>
+	    <td>A:<input type="text" id="inA3" name="inA3" class="bitfield"></td>
+	    <td rowspan="2">
+	      <object id='box3' data="inoutbox3.svg" type="image/svg+xml" style="height: 3em;"></object>
+	      <!--<img id='box1' style="height: 3em;"src="inoutbox.svg">-->
+	    </td>	    <td rowspan="2">
+	      <input type="text" id="res3" name="res3" class="bitfield" readonly
+		     onfocus="this.blur()" tabindex="-1">
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>B:<input type="text" id="inB3" name="inB3" class="bitfield"></td>
+	  </tr>
+	</table>
+      </td>
+      <td>&nbsp;&nbsp;</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding-left: 1em;">
+	<div style="height: 1.25em;"></div>
+	<b>Messages</b><br>
+	<div id="msg3" style="height: 100px; border: 1px red solid">
+	</div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+<!-- -------------------------------------------- -->
+<div class="mainlist" id="widget4">
+    <div style="width: 600pt;">
+      <b>4. CHALLENGE! Implementing "xor" as a program in the Javascript language</b><br>
+      Your task for this problem is to implement the same functionality as an
+      "xor-gate" (see truth table) using only "if", "else", "==" and our simple API of getA(),
+      getB() and
+      output(<em>num</em>).  Here is the truth table for "xor"
+      (often denoted with "&oplus;").
+      Be sure to test your program for each row of the truth table!
+      <br><br>
+        <table class="tt">
+          <tr><th>A</th><th>B</th><th>A&oplus;B</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>0</td><td>1</td><td>1</td></tr>
+          <tr><td>1</td><td>0</td><td>1</td></tr>
+          <tr><td>1</td><td>1</td><td>0</td></tr>
+        </table>
+    </div>
+    <div style="height: 0em;"></div>
+    <table>
+      <tr>
+	<td style="text-align: center;"><b>PROG4 : your program</b></td>
+	<td colspan="2" style="text-align: center;"><b>tester for your program</b></td>
+	<td></td>
+	<td></td>
+      </tr>
+      <tr>
+	<td rowspan="2">
+	  <div class="editor" id="editor4">if (getA() == 0) {
+  output(0);
+}
+else {
+  output(1);
+}</div>
+      </td>
+      <td style="padding-left: 1em; padding-right: 1em;">
+	<button type="button"
+		onclick="widget4.execit('inA4','inB4','res4','msg4')">execute</button>
+      </td>
+      <td>
+	<table>
+	  <tr>
+	    <td>A:<input type="text" id="inA4" name="inA4" class="bitfield"></td>
+	    <td rowspan="2">
+	      <object id='box4' data="inoutbox4.svg" type="image/svg+xml" style="height: 3em;"></object>
+	      <!--<img id='box1' style="height: 3em;"src="inoutbox.svg">-->
+	    </td>	    <td rowspan="2">
+	      <input type="text" id="res4" name="res4" class="bitfield" readonly
+		     onfocus="this.blur()" tabindex="-1">
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>B:<input type="text" id="inB4" name="inB4" class="bitfield"></td>
+	  </tr>
+	</table>
+      </td>
+      <td>&nbsp;&nbsp;</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding-left: 1em;">
+	<div style="height: 1.25em;"></div>
+	<b>Messages</b><br>
+	<div id="msg4" style="height: 100px; border: 1px red solid">
+	</div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+  <script src="ex1.js"></script>
+  <script type="text/javascript">
+    widget1 = makeEditor("editor1");
+    widget2 = makeEditor("editor2");
+    widget3 = makeEditor("editor3");
+    widget4 = makeEditor("editor4");
+  </script>
+</body>
+</html>
