@@ -34,7 +34,15 @@ function makeEditor(ename) {
     let setVal = function(id,val) {
 	let e = document.getElementById(id);
 	e.value = String(val);
+	e.style.background = (val == "" || val == null || val == undefined) ? "white" : "yellow"; 
     }
+
+    let clrVal = function(id) {
+	let e = document.getElementById(id);
+	e.value = String();
+	e.style.background="white";
+    }
+    
     let setMsg = function(id,val) {
 	let e = document.getElementById(id);
 	e.innerHTML = String(val);
@@ -49,8 +57,11 @@ function makeEditor(ename) {
 	    if (res == "") {
 		setMsg(idmsg,"Warning!  No output given.");
 	    }
-	    else
-		setVal(idres,res)
+	    else {
+		setVal(idres,res);
+		// set things up so value disappears ... at the right time
+		setTimeout(function(){clrVal(idres);},2000);
+	    }
 	}
 	catch(e) {
 	    setMsg(idmsg,e);

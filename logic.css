@@ -25,7 +25,8 @@ h1 {
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px;
-  margin: 18px;
+  margin-left: 18px;
+  margin-top: 48px;
   width: 600pt;
   background-color: white;
 }
