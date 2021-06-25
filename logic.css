@@ -15,6 +15,7 @@ h1 {
     width: 400px;
     border-style: solid;
     border-color: red;
+    font-size: 12pt;
 }
 
 .bitfield {
