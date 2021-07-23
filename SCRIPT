@@ -1,0 +1,34 @@
+A. BACKGROUND
+   This activity is supposed to take place within the context
+   of a larger sequence of activities on logic.  So the students
+   should have seen truth tables, and/or/not, simple cictuits
+   and a discussion of how if statements work.
+
+B. PROGRAMMING LANGUAGES AND APIs
+   All programming languages have the same ability to "think".  If
+   you can compute a number in one language you can compute it in
+   any other language.  But "thinking" or "computing" alone is a
+   pointless exercise. A program needs to be able to interact with
+   the outside world --- whatever "the world" means to your
+   particular program --- for the thinking to have a purpose.  The
+   language features that allow a program to interact with "the
+   world" are collectively referred to as "the API".
+
+   The language we are using is called "Javascript" and, usually,
+   "the world" a Javascript program interacts with is a tab in your
+   browser.  For example, pull up https://www.usna.edu/STEM/index.php
+   and press ctrl+shift+i (for macs option+cmd+i ?), and click on the
+   "console" tab.  The console your browser pulls up is a Javascript
+   *interpreter*, meaning that you can type Javascript code and press
+   enter and the code will be executed.  Here are a few snippets of
+   Javascript code you can enter that show off the API:
+   * alert("Hello World!")
+   * Select (highlight) some text then enter:
+     document.getSelection().baseNode.data
+     This code asks the browser to tell it what text is highlighted.
+   * Select (highlight) some text then enter:
+     document.getSelection().baseNode.data = "My name is <your name>!"
+     This code actually changes the contents of the webpage you are
+     looking at. NOTE: You are only changing what *your* browser is
+     showing.
+     
